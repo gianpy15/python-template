@@ -1,0 +1,12 @@
+version: "3.2"
+
+services:
+
+  dev:
+    build: .
+    volumes:
+      - ".:/code"
+      - "~/.aws:/home/app/.aws"
+      - "~/.ssh:/home/app/.ssh"
+      # so that packages are not redownloaded every time, even if we recreate the container
+      - "~/.cache:/home/app/.cache"
