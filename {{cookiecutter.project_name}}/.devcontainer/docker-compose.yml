@@ -1,0 +1,9 @@
+# This is used as docker-compose.override.yml when starting the container through vscode
+# See here: https://docs.docker.com/compose/extends/#multiple-compose-files
+
+version: '3'
+services:
+  dev:
+    # Overrides default command so that we can attach to the long-running container
+    entrypoint: sleep
+    command: infinity

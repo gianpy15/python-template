@@ -1,0 +1,38 @@
+// Configuration file for opening VSCode inside the container.
+// See: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+{
+    "name": "{{cookiecutter.project_name}}",
+  
+    // Update the 'dockerComposeFile' list if you have more overrides compose files or use different names.
+    "dockerComposeFile": [
+      "../docker-compose.yml",
+      "docker-compose.yml"
+    ],
+  
+    // The 'service' property is the name of the service for the container that VS Code should use.
+    "service": "dev",
+  
+    // The 'workspaceFolder' property is the path VS Code should open by default when connected.
+    "workspaceFolder": "/code",
+
+    // Create virtualenv inside the container
+    "postCreateCommand": "poetry install",
+  
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "editor.minimap.enabled": false,
+          "python.defaultInterpreterPath": "/code/.venv/bin/python",
+          "terminal.integrated.defaultProfile.linux": "bash"
+        },
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "eamodio.gitlens",
+          "tal7aouy.icons",
+          "bungcip.better-toml",
+          "ms-azuretools.vscode-docker"
+        ]
+      }
+    }
+  }
